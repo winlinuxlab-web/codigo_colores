@@ -3,1221 +3,314 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#CC0000">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Código Colores">
 <title>Certificación Código de Colores – INACAP</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 <style>
-/* ── Variables INACAP ─────────────────────────────── */
 :root {
-  --rojo:       #CC0000;
-  --rojo-osc:   #990000;
-  --rojo-claro: #FF3333;
-  --gris-osc:   #1C1C1C;
-  --gris-med:   #2E2E2E;
-  --gris-ui:    #3A3A3A;
-  --gris-borde: #4A4A4A;
-  --gris-texto: #B0B0B0;
-  --blanco:     #F5F5F5;
-  --blanco-pur: #FFFFFF;
-  --verde:      #2E7D32;
-  --verde-cl:   #43A047;
-  --naranja:    #E65100;
-
-  /* bandas */
-  --negro:    #111111;
-  --marron:   #7B3F00;
-  --rojo-b:   #CC0000;
-  --naranja-b:#FF6600;
-  --amarillo: #FFD700;
-  --verde-b:  #2E7D32;
-  --azul-b:   #1565C0;
-  --violeta:  #6A1B9A;
-  --gris-b:   #757575;
-  --blanco-b: #F5F5F5;
-  --dorado:   #DAA520;
+  --inacap-red: #e2231a;
+  --bg-dark: #0f0f0f;
+  --panel: #1a1a1a;
+  --white: #ffffff;
+  --gray: #888888;
+  --border: rgba(226, 35, 26, 0.3);
+  
+  /* Colores bandas */
+  --b-negro: #111111; --b-marron: #7B3F00; --b-rojo: #CC0000;
+  --b-naranja: #FF6600; --b-amarillo: #FFD700; --b-verde: #2E7D32;
+  --b-azul: #1565C0; --b-violeta: #6A1B9A; --b-gris: #757575;
+  --b-blanco: #F5F5F5; --b-dorado: #DAA520;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body {
-  height: 100%;
+body {
+  background: var(--bg-dark);
+  color: var(--white);
   font-family: 'Barlow', sans-serif;
-  background: var(--gris-osc);
-  color: var(--blanco);
-  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
-/* ── Layout principal ─────────────────────────────── */
 #app {
-  min-height: 100vh;
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
 }
 
-/* ── Header ───────────────────────────────────────── */
 header {
-  background: linear-gradient(135deg, var(--rojo-osc) 0%, var(--rojo) 60%, var(--rojo-claro) 100%);
-  padding: 0;
-  position: relative;
-  overflow: hidden;
+  text-align: center;
+  border-bottom: 3px solid var(--inacap-red);
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
 }
-header::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0; right: 0;
-  height: 4px;
-  background: repeating-linear-gradient(90deg,
-    var(--negro) 0 40px, var(--marron) 40px 80px, var(--rojo-b) 80px 120px,
-    var(--naranja-b) 120px 160px, var(--amarillo) 160px 200px,
-    var(--verde-b) 200px 240px, var(--azul-b) 240px 280px,
-    var(--violeta) 280px 320px, var(--gris-b) 320px 360px,
-    var(--blanco-b) 360px 400px
-  );
-}
-.header-inner {
-  padding: 20px 20px 24px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-.logo-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 6px;
-}
-.logo-badge {
-  background: rgba(255,255,255,0.15);
-  border: 2px solid rgba(255,255,255,0.4);
-  border-radius: 8px;
-  padding: 4px 10px;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  font-size: 18px;
+
+.inst-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--inacap-red);
   letter-spacing: 2px;
-  color: #fff;
-  text-transform: uppercase;
-}
-.header-subtitle {
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
-}
-.header-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  font-size: clamp(22px, 6vw, 30px);
-  line-height: 1.1;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  line-height: 1;
 }
 
-/* ── Contenedor central ───────────────────────────── */
-main {
-  flex: 1;
-  max-width: 600px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 20px 16px 32px;
-}
-
-/* ── Barra de progreso ────────────────────────────── */
-.progress-bar-wrap {
-  background: var(--gris-ui);
-  border-radius: 99px;
-  height: 8px;
-  margin-bottom: 6px;
-  overflow: hidden;
-}
-.progress-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--rojo-osc), var(--rojo-claro));
-  border-radius: 99px;
-  transition: width 0.5s ease;
-}
-.progress-label {
-  font-size: 12px;
-  color: var(--gris-texto);
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 18px;
-}
-
-/* ── Tarjeta de pregunta ──────────────────────────── */
-.card {
-  background: var(--gris-med);
-  border: 1px solid var(--gris-borde);
-  border-radius: 16px;
-  padding: 24px 20px;
-  margin-bottom: 16px;
-  animation: slideIn 0.35s ease;
-}
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.modo-badge {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 3px 10px;
-  border-radius: 99px;
-  margin-bottom: 14px;
-}
-.modo-a { background: rgba(204,0,0,0.2); color: var(--rojo-claro); border: 1px solid var(--rojo); }
-.modo-b { background: rgba(21,101,192,0.2); color: #64B5F6; border: 1px solid #1565C0; }
-
-.card-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 18px;
+.inst-dept {
+  font-size: 1rem;
+  letter-spacing: 0.25em;
+  color: var(--white);
   font-weight: 700;
-  color: var(--blanco);
-  margin-bottom: 18px;
-  line-height: 1.3;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
 }
 
-/* ── Resistencia visual ───────────────────────────── */
+.sub-title {
+  font-size: 1.2rem;
+  color: var(--inacap-red);
+  font-weight: 600;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
+.credit-line {
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-top: 0.4rem;
+  font-style: italic;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  width: 100%;
+  background: var(--inacap-red);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.btn-primary:hover { background: #b51a14; }
+
+/* Resistencia Visual */
 .resistor-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0;
-  margin: 10px 0 22px;
+  margin: 1.5rem 0;
 }
-.resistor-wire {
-  height: 3px;
-  width: 30px;
-  background: #888;
-  border-radius: 2px;
-}
+.resistor-wire { height: 4px; width: 40px; background: #555; }
 .resistor-body {
   display: flex;
-  align-items: stretch;
-  height: 36px;
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
-  border: 1.5px solid rgba(255,255,255,0.12);
-}
-.resistor-body-bg {
-  display: flex;
-  align-items: stretch;
+  height: 40px;
   background: #C8A96A;
+  border-radius: 8px;
+  padding: 0 10px;
+  align-items: stretch;
+  gap: 8px;
+  border: 1px solid rgba(0,0,0,0.2);
 }
-.band {
-  width: 18px;
-  height: 100%;
-  position: relative;
-}
-.band::after {
-  content: '';
-  position: absolute;
-  top: 0; right: 0;
-  width: 2px; height: 100%;
-  background: rgba(0,0,0,0.15);
-}
-.band-gap { width: 14px; background: #C8A96A; }
-.band-gap-wide { width: 22px; background: #C8A96A; }
+.band { width: 12px; height: 100%; }
 
-/* Colores de bandas */
-.b-negro    { background: #111111; }
-.b-marron   { background: #7B3F00; }
-.b-rojo     { background: #CC0000; }
-.b-naranja  { background: #FF6600; }
-.b-amarillo { background: #FFD700; }
-.b-verde    { background: #2E7D32; }
-.b-azul     { background: #1565C0; }
-.b-violeta  { background: #6A1B9A; }
-.b-gris     { background: #757575; }
-.b-blanco   { background: #F0F0F0; }
-.b-dorado   { background: linear-gradient(135deg, #DAA520, #F5C842, #DAA520); }
-.b-plata    { background: linear-gradient(135deg, #AAAAAA, #DDDDDD, #AAAAAA); }
-
-/* ── Etiquetas de color ───────────────────────────── */
-.band-labels {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-.band-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  font-size: 11px;
-  color: var(--gris-texto);
-}
-.color-chip {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  border: 1.5px solid rgba(255,255,255,0.2);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
-.color-chip.b-blanco { border-color: #aaa; }
-.band-label span { font-weight: 600; color: var(--blanco); font-size: 12px; }
-.band-label small { font-size: 10px; color: var(--gris-texto); }
-
-/* ── Valor destacado ──────────────────────────────── */
-.valor-display {
-  text-align: center;
-  margin-bottom: 22px;
-}
-.valor-numero {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(40px, 12vw, 64px);
-  font-weight: 800;
-  color: var(--blanco-pur);
-  line-height: 1;
-  letter-spacing: -1px;
-}
-.valor-unidad {
-  font-size: 16px;
-  color: var(--gris-texto);
-  margin-top: 4px;
-}
-.valor-tolerancia {
-  font-size: 13px;
-  color: var(--dorado);
-  margin-top: 4px;
-}
-
-/* ── Inputs ───────────────────────────────────────── */
-.input-group {
-  margin-bottom: 14px;
-}
-.input-group label {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--gris-texto);
-  margin-bottom: 6px;
-}
+/* Inputs Estilizados */
+.input-group { margin-bottom: 1rem; }
+.input-group label { display: block; font-size: 0.8rem; color: var(--gray); margin-bottom: 0.3rem; text-transform: uppercase; }
 .input-group input {
   width: 100%;
-  background: var(--gris-ui);
-  border: 1.5px solid var(--gris-borde);
-  border-radius: 10px;
-  padding: 13px 16px;
+  background: #252525;
+  border: 2px solid #333;
+  padding: 0.8rem;
+  color: white;
+  border-radius: 6px;
   font-family: 'Barlow', sans-serif;
-  font-size: 16px;
-  color: var(--blanco);
-  outline: none;
-  transition: border-color 0.2s, background 0.2s;
-  -webkit-appearance: none;
 }
-.input-group input:focus {
-  border-color: var(--rojo);
-  background: #333;
-}
-.input-group input.ok   { border-color: var(--verde-cl); background: rgba(46,125,50,0.12); }
-.input-group input.fail { border-color: var(--rojo);     background: rgba(204,0,0,0.10); }
+.input-group input:focus { border-color: var(--inacap-red); outline: none; }
 
-/* ── Botón principal ──────────────────────────────── */
-.btn-primary {
-  width: 100%;
-  background: linear-gradient(135deg, var(--rojo-osc), var(--rojo));
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  padding: 16px;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 4px 16px rgba(204,0,0,0.35);
-  margin-top: 6px;
-}
-.btn-primary:active { transform: scale(0.97); }
-.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.nota-display { font-family: 'Orbitron'; font-size: 5rem; color: var(--inacap-red); text-align: center; }
+.hidden { display: none !important; }
 
-/* ── Feedback ─────────────────────────────────────── */
-.feedback-card {
-  border-radius: 12px;
-  padding: 16px 18px;
-  margin-bottom: 14px;
-  animation: fadeIn 0.3s ease;
-}
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-.feedback-card.correcto {
-  background: rgba(46,125,50,0.18);
-  border: 1.5px solid var(--verde-cl);
-}
-.feedback-card.incorrecto {
-  background: rgba(204,0,0,0.14);
-  border: 1.5px solid var(--rojo);
-}
-.feedback-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.feedback-card.correcto .feedback-title { color: #66BB6A; }
-.feedback-card.incorrecto .feedback-title { color: var(--rojo-claro); }
-.feedback-detail {
-  font-size: 13px;
-  color: var(--gris-texto);
-  line-height: 1.6;
-}
-.feedback-detail strong { color: var(--blanco); }
-
-/* ── Countdown ────────────────────────────────────── */
-.countdown-wrap {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 14px;
-}
-.countdown-ring {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-}
-.countdown-ring svg { transform: rotate(-90deg); }
-.countdown-ring .bg  { fill: none; stroke: var(--gris-ui); stroke-width: 3; }
-.countdown-ring .fg  { fill: none; stroke: var(--rojo); stroke-width: 3;
-  stroke-linecap: round;
-  stroke-dasharray: 110;
-  stroke-dashoffset: 0;
-  transition: stroke-dashoffset 1s linear;
-}
-.countdown-number {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: var(--blanco);
-}
-.countdown-text { font-size: 13px; color: var(--gris-texto); }
-
-/* ── Pantalla de inicio ───────────────────────────── */
-#screen-inicio {
-  text-align: center;
-}
-.inicio-icon {
-  font-size: 60px;
-  margin-bottom: 16px;
-  display: block;
-}
-.resistor-demo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 24px 0;
-}
-.info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 24px;
-  text-align: left;
-}
-.info-item {
-  background: var(--gris-ui);
-  border-radius: 10px;
-  padding: 14px;
-  border-left: 3px solid var(--rojo);
-}
-.info-item .num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--rojo-claro);
-  line-height: 1;
-}
-.info-item .lbl {
-  font-size: 12px;
-  color: var(--gris-texto);
-  margin-top: 2px;
-}
-
-/* ── Referencia de colores ────────────────────────── */
-.ref-table {
-  background: var(--gris-ui);
-  border-radius: 10px;
-  padding: 14px;
-  margin-bottom: 20px;
-  overflow-x: auto;
-}
-.ref-table table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 12px;
-}
-.ref-table th {
-  color: var(--gris-texto);
-  font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 4px 6px;
-  text-align: left;
-  border-bottom: 1px solid var(--gris-borde);
-}
-.ref-table td {
-  padding: 5px 6px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  vertical-align: middle;
-}
-.ref-swatch {
-  width: 20px; height: 20px;
-  border-radius: 4px;
-  border: 1px solid rgba(255,255,255,0.15);
-  display: inline-block;
-  vertical-align: middle;
-}
-.ref-table .color-name { color: var(--blanco); font-weight: 500; }
-.ref-table .digit { color: var(--gris-texto); text-align: center; }
-.ref-table .mult  { color: #90CAF9; text-align: right; font-size: 11px; }
-
-/* ── Pantalla de resultados ───────────────────────── */
-#screen-resultados { text-align: center; }
-.nota-display {
-  margin: 20px 0;
-}
-.nota-numero {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(80px, 25vw, 120px);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -2px;
-}
-.nota-aprobado   { color: var(--verde-cl); }
-.nota-regular    { color: #FFB300; }
-.nota-reprobado  { color: var(--rojo-claro); }
-
-.estado-badge {
-  display: inline-block;
-  padding: 6px 18px;
-  border-radius: 99px;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-top: 8px;
-}
-.estado-aprobado   { background: rgba(46,125,50,0.25); color: #66BB6A; border: 1px solid #2E7D32; }
-.estado-regular    { background: rgba(255,179,0,0.2);  color: #FFD54F; border: 1px solid #FFB300; }
-.estado-reprobado  { background: rgba(204,0,0,0.2);    color: var(--rojo-claro); border: 1px solid var(--rojo); }
-
-.stats-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
-  margin: 20px 0;
-}
-.stat-box {
-  background: var(--gris-ui);
-  border-radius: 10px;
-  padding: 14px 8px;
-}
-.stat-box .val {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--blanco);
-}
-.stat-box .lbl {
-  font-size: 10px;
-  color: var(--gris-texto);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 2px;
-}
-
-/* tabla historial */
-.hist-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-  margin-bottom: 20px;
-  text-align: left;
-}
-.hist-table th {
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--gris-texto);
-  padding: 6px 8px;
-  border-bottom: 1px solid var(--gris-borde);
-}
-.hist-table td {
-  padding: 8px 8px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  vertical-align: middle;
-}
-.hist-table td:first-child { color: var(--gris-texto); width: 32px; text-align: center; }
-.hist-table td:last-child  { text-align: center; width: 80px; }
-.tick-ok   { color: #66BB6A; font-weight: 700; }
-.tick-fail { color: var(--rojo-claro); font-weight: 700; }
-
-.prog-bar-final {
-  height: 12px;
-  background: var(--gris-ui);
-  border-radius: 99px;
-  overflow: hidden;
-  margin: 10px 0 6px;
-}
-.prog-bar-final-fill {
-  height: 100%;
-  border-radius: 99px;
-  transition: width 1s ease;
-}
-.prog-label-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: var(--gris-texto);
-  margin-bottom: 20px;
-}
-
-/* ── Pantalla oculta ──────────────────────────────── */
-.screen { display: none; }
-.screen.active { display: block; }
-
-/* ── Referencia colapsable ────────────────────────── */
-.ref-toggle {
-  background: none;
-  border: 1px solid var(--gris-borde);
-  border-radius: 8px;
-  color: var(--gris-texto);
-  font-family: 'Barlow', sans-serif;
-  font-size: 13px;
-  padding: 8px 14px;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.ref-panel { display: none; }
-.ref-panel.open { display: block; }
-
-/* ── Responsive ───────────────────────────────────── */
-@media (max-width: 400px) {
-  .info-grid { grid-template-columns: 1fr 1fr; }
-  .stats-row { grid-template-columns: 1fr 1fr 1fr; }
-}
+/* Colores de Bandas */
+.b-negro { background: #000; } .b-marron { background: #7B3F00; } .b-rojo { background: #CC0000; }
+.b-naranja { background: #FF6600; } .b-amarillo { background: #FFD700; } .b-verde { background: #2E7D32; }
+.b-azul { background: #1565C0; } .b-violeta { background: #6A1B9A; } .b-gris { background: #757575; }
+.b-blanco { background: #F5F5F5; } .b-dorado { background: #DAA520; }
 </style>
 </head>
 <body>
-<div id="app">
 
-  <!-- HEADER siempre visible -->
+<div id="app">
   <header>
-    <div class="header-inner">
-      <div class="logo-row">
-        <div class="logo-badge">INACAP</div>
-        <div class="header-subtitle">Fundamentos de Electrónica</div>
-      </div>
-      <div class="header-title">Certificación<br>Código de Colores</div>
-    </div>
+    <div class="inst-name">INACAP</div>
+    <div class="inst-dept">Electricidad y Electrónica</div>
+    <div class="sub-title">Certificación Código de Colores</div>
+    <div class="credit-line">Aporte de la docente Edith Mena (NMZ)</div>
   </header>
 
   <main>
-
-    <!-- ══════════════════════════════════════════
-         PANTALLA 1 — INICIO
-    ══════════════════════════════════════════ -->
-    <div id="screen-inicio" class="screen active">
-
-      <!-- Resistencia decorativa -->
-      <div class="resistor-demo">
-        <div class="resistor-wrap">
-          <div class="resistor-wire"></div>
-          <div class="resistor-body">
-            <div class="resistor-body-bg">
-              <div class="band-gap"></div>
-              <div class="band b-rojo"></div>
-              <div class="band-gap"></div>
-              <div class="band b-naranja"></div>
-              <div class="band-gap"></div>
-              <div class="band b-rojo"></div>
-              <div class="band-gap-wide"></div>
-              <div class="band b-dorado"></div>
-              <div class="band-gap"></div>
-            </div>
-          </div>
-          <div class="resistor-wire"></div>
+    <div id="screen-inicio" class="card">
+      <div class="resistor-wrap">
+        <div class="resistor-wire"></div>
+        <div class="resistor-body">
+          <div class="band b-marron"></div>
+          <div class="band b-negro"></div>
+          <div class="band b-rojo"></div>
+          <div style="width:20px"></div>
+          <div class="band b-dorado"></div>
         </div>
+        <div class="resistor-wire"></div>
       </div>
-
-      <div class="info-grid">
-        <div class="info-item"><div class="num">10</div><div class="lbl">Preguntas aleatorias</div></div>
-        <div class="info-item"><div class="num">E24</div><div class="lbl">Serie comercial</div></div>
-        <div class="info-item"><div class="num">4</div><div class="lbl">Bandas (Dorada ±5%)</div></div>
-        <div class="info-item"><div class="num">60%</div><div class="lbl">Exigencia aprobación</div></div>
-      </div>
-
-      <!-- Referencia colapsable -->
-      <button class="ref-toggle" onclick="toggleRef()">
-        <span>📋 Ver tabla de referencia de colores</span>
-        <span id="ref-arrow">▼</span>
-      </button>
-      <div class="ref-panel" id="ref-panel">
-        <div class="ref-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Color</th>
-                <th>Nombre</th>
-                <th style="text-align:center">Dígito</th>
-                <th style="text-align:right">Multiplicador</th>
-              </tr>
-            </thead>
-            <tbody id="ref-tbody"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <button class="btn-primary" onclick="iniciarQuiz()">COMENZAR CERTIFICACIÓN</button>
+      <p style="text-align:center; color: var(--gray); margin-bottom: 1.5rem;">
+        Evaluación de 10 ejercicios aleatorios.<br>Resistencias serie E24 de 4 bandas.<br>
+        <strong>Exigencia: 60% para aprobación (4.0).</strong>
+      </p>
+      <button class="btn-primary" onclick="iniciarQuiz()">Comenzar Certificación</button>
     </div>
 
-    <!-- ══════════════════════════════════════════
-         PANTALLA 2 — PREGUNTA
-    ══════════════════════════════════════════ -->
-    <div id="screen-pregunta" class="screen">
-
-      <div class="progress-bar-wrap">
-        <div class="progress-bar-fill" id="prog-fill" style="width:0%"></div>
-      </div>
-      <div class="progress-label">
-        <span id="prog-texto">Pregunta 0 de 10</span>
-        <span id="prog-aciertos">Aciertos: 0</span>
-      </div>
-
-      <div class="card" id="pregunta-card">
-        <!-- contenido dinámico -->
-      </div>
-
-      <div id="feedback-area"></div>
-
+    <div id="screen-pregunta" class="card hidden">
+      <div id="prog-texto" style="font-size: 0.8rem; color: var(--inacap-red); margin-bottom: 1rem; font-weight: 700;"></div>
+      <div id="pregunta-content"></div>
+      <div id="feedback-area" style="margin: 1rem 0; padding: 1rem; border-radius: 6px; display: none; font-weight: 600;"></div>
+      <button class="btn-primary" id="btn-main" onclick="validar()">Validar</button>
     </div>
 
-    <!-- ══════════════════════════════════════════
-         PANTALLA 3 — RESULTADOS
-    ══════════════════════════════════════════ -->
-    <div id="screen-resultados" class="screen">
-      <div class="nota-display">
-        <div class="nota-numero" id="res-nota">–</div>
-        <div class="estado-badge" id="res-estado">–</div>
-      </div>
-
-      <div class="stats-row">
-        <div class="stat-box">
-          <div class="val" id="res-aciertos">–</div>
-          <div class="lbl">Correctas</div>
-        </div>
-        <div class="stat-box">
-          <div class="val" id="res-errores">–</div>
-          <div class="lbl">Incorrectas</div>
-        </div>
-        <div class="stat-box">
-          <div class="val" id="res-pct">–</div>
-          <div class="lbl">Logro</div>
-        </div>
-      </div>
-
-      <div class="prog-bar-final">
-        <div class="prog-bar-final-fill" id="res-bar" style="width:0%"></div>
-      </div>
-      <div class="prog-label-row">
-        <span>0%</span><span>Exigencia 60%</span><span>100%</span>
-      </div>
-
-      <!-- Historial -->
-      <div class="card" style="padding:16px 12px">
-        <table class="hist-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Modo</th>
-              <th>Resultado</th>
-            </tr>
-          </thead>
-          <tbody id="hist-tbody"></tbody>
-        </table>
-      </div>
-
-      <div id="res-countdown" style="text-align:center;color:var(--gris-texto);font-size:13px;margin-bottom:16px"></div>
-      <button class="btn-primary" onclick="reiniciar()">VOLVER A INTENTAR</button>
+    <div id="screen-resultados" class="card hidden">
+      <h2 style="text-align:center">Resultado Final</h2>
+      <div class="nota-display" id="res-nota">1.0</div>
+      <div id="res-stats" style="text-align:center; margin-bottom: 2rem; color: var(--gray);"></div>
+      <button class="btn-primary" onclick="location.reload()">Reiniciar</button>
     </div>
-
   </main>
 </div>
 
 <script>
-// ═══════════════════════════════════════════════
-//  DATOS: CÓDIGO DE COLORES
-// ═══════════════════════════════════════════════
+// Lógica simplificada y robusta
 const COLORES = [
-  { nombre:'Negro',    digito:0, mult:1,       css:'b-negro'    },
-  { nombre:'Marrón',   digito:1, mult:10,      css:'b-marron'   },
-  { nombre:'Rojo',     digito:2, mult:100,     css:'b-rojo'     },
-  { nombre:'Naranja',  digito:3, mult:1000,    css:'b-naranja'  },
-  { nombre:'Amarillo', digito:4, mult:10000,   css:'b-amarillo' },
-  { nombre:'Verde',    digito:5, mult:100000,  css:'b-verde'    },
-  { nombre:'Azul',     digito:6, mult:1000000, css:'b-azul'     },
-  { nombre:'Violeta',  digito:7, mult:null,    css:'b-violeta'  },
-  { nombre:'Gris',     digito:8, mult:null,    css:'b-gris'     },
-  { nombre:'Blanco',   digito:9, mult:null,    css:'b-blanco'   },
+  { n:'Negro', d:0, m:1, c:'b-negro' },
+  { n:'Marrón', d:1, m:10, c:'b-marron' },
+  { n:'Rojo', d:2, m:100, c:'b-rojo' },
+  { n:'Naranja', d:3, m:1000, c:'b-naranja' },
+  { n:'Amarillo', d:4, m:10000, c:'b-amarillo' },
+  { n:'Verde', d:5, m:100000, c:'b-verde' },
+  { n:'Azul', d:6, m:1000000, c:'b-azul' }
 ];
 
-// Multiplicadores usados en serie E24 para este quiz
-const MULTS_QUIZ = [10, 100, 1000];
+const E24_BASE = [10, 12, 15, 18, 22, 27, 33, 39, 47, 56, 68, 82];
+const MULTS = [1, 10, 100, 1000];
 
-const E24_BASE = [
-  10,11,12,13,15,16,18,20,22,24,
-  27,30,33,36,39,43,47,51,56,62,
-  68,75,82,91
-];
+let currentIdx = 0, score = 0, questions = [];
 
-// ── Normalización ──────────────────────────────
-function normalizar(s) {
-  return s.trim().toLowerCase()
-    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-    .replace(/cafe/,'marron')
-    .replace(/marrón/,'marron')
-    .replace(/marron/,'marron');
-}
-function coloresIguales(a, b) { return normalizar(a) === normalizar(b); }
-
-// ── Formateo ───────────────────────────────────
-function fmtOhm(v) {
-  if (v >= 1000) return (v/1000).toFixed(v%1000===0?0:1).replace('.0','') + ' kΩ';
-  return v + ' Ω';
-}
-
-// ── Valor → bandas ─────────────────────────────
-function valorABandas(valor) {
-  for (const m of MULTS_QUIZ) {
-    const q = valor / m;
-    if (q >= 10 && q < 100 && Number.isInteger(q)) {
-      const d1 = Math.floor(q/10);
-      const d2 = q % 10;
-      return { d1, d2, mult: m };
-    }
-  }
-  return null;
-}
-
-function colorPorDigito(d)  { return COLORES.find(c => c.digito === d); }
-function colorPorMult(m)    { return COLORES.find(c => c.mult === m); }
-
-// ── Generar valor E24 ──────────────────────────
-function genValor() {
-  const base = E24_BASE[Math.floor(Math.random()*E24_BASE.length)];
-  const mult = MULTS_QUIZ[Math.floor(Math.random()*MULTS_QUIZ.length)];
-  return base * mult;
-}
-
-// ── Nota escala chilena ────────────────────────
-function calcNota(aciertos, total=10) {
-  const p = aciertos / total;
-  if (p <= 0.60) return +(1.0 + (p/0.60)*3.0).toFixed(1);
-  return +(4.0 + ((p-0.60)/0.40)*3.0).toFixed(1);
-}
-
-// ═══════════════════════════════════════════════
-//  ESTADO GLOBAL
-// ═══════════════════════════════════════════════
-let estado = {
-  preguntaIdx: 0,
-  aciertos: 0,
-  historial: [],
-  modos: [],
-  respondido: false,
-  timerID: null,
-};
-
-// ═══════════════════════════════════════════════
-//  REFERENCIA COLORES (tabla inicio)
-// ═══════════════════════════════════════════════
-function buildRefTable() {
-  const tb = document.getElementById('ref-tbody');
-  COLORES.forEach(c => {
-    const multStr = c.mult !== null ? (c.mult >= 1000 ? (c.mult/1000)+'k' : c.mult)+'x' : '—';
-    tb.innerHTML += `<tr>
-      <td><span class="ref-swatch ${c.css}"></span></td>
-      <td class="color-name">${c.nombre}</td>
-      <td class="digit">${c.digito}</td>
-      <td class="mult">${multStr}</td>
-    </tr>`;
-  });
-}
-function toggleRef() {
-  const p = document.getElementById('ref-panel');
-  const a = document.getElementById('ref-arrow');
-  p.classList.toggle('open');
-  a.textContent = p.classList.contains('open') ? '▲' : '▼';
-}
-
-// ═══════════════════════════════════════════════
-//  INICIAR QUIZ
-// ═══════════════════════════════════════════════
 function iniciarQuiz() {
-  // Generar 5 de cada modo, mezclados
-  const m = ['A','A','A','A','A','B','B','B','B','B'];
-  for (let i = m.length-1; i > 0; i--) {
-    const j = Math.floor(Math.random()*(i+1));
-    [m[i],m[j]] = [m[j],m[i]];
+  for(let i=0; i<10; i++) {
+    let base = E24_BASE[Math.floor(Math.random()*E24_BASE.length)];
+    let mult = MULTS[Math.floor(Math.random()*MULTS.length)];
+    let val = base * mult;
+    questions.push({
+      val, 
+      d1: Math.floor(base/10), 
+      d2: base%10, 
+      m: mult,
+      modo: Math.random() > 0.5 ? 'A' : 'B'
+    });
   }
-  estado = { preguntaIdx:0, aciertos:0, historial:[], modos:m, respondido:false, timerID:null };
-  mostrarPantalla('screen-pregunta');
-  renderPregunta();
+  document.getElementById('screen-inicio').classList.add('hidden');
+  document.getElementById('screen-pregunta').classList.remove('hidden');
+  renderQuestion();
 }
 
-// ═══════════════════════════════════════════════
-//  RENDER PREGUNTA
-// ═══════════════════════════════════════════════
-function renderPregunta() {
-  const idx = estado.preguntaIdx;
-  const modo = estado.modos[idx];
-  const total = 10;
+function renderQuestion() {
+  const q = questions[currentIdx];
+  const content = document.getElementById('pregunta-content');
+  document.getElementById('prog-texto').textContent = `EJERCICIO ${currentIdx + 1} DE 10`;
+  document.getElementById('feedback-area').style.display = 'none';
+  document.getElementById('btn-main').onclick = validar;
+  document.getElementById('btn-main').textContent = "Validar";
 
-  document.getElementById('prog-fill').style.width = (idx/total*100)+'%';
-  document.getElementById('prog-texto').textContent = `Pregunta ${idx+1} de ${total}`;
-  document.getElementById('prog-aciertos').textContent = `Aciertos: ${estado.aciertos}`;
-  document.getElementById('feedback-area').innerHTML = '';
-
-  const valor = genValor();
-  const { d1, d2, mult } = valorABandas(valor);
-  const c1 = colorPorDigito(d1);
-  const c2 = colorPorDigito(d2);
-  const c3 = colorPorMult(mult);
-  const tol = 5;
-  const vMin = valor * (1 - tol/100);
-  const vMax = valor * (1 + tol/100);
-
-  // Guardar datos de la pregunta actual
-  estado.pregActual = { modo, valor, d1, d2, mult, c1, c2, c3, vMin, vMax };
-
-  const card = document.getElementById('pregunta-card');
-  card.className = 'card';
-
-  if (modo === 'A') {
-    // Colores → Valor
-    card.innerHTML = `
-      <div class="modo-badge modo-a">Colores → Valor</div>
-      <div class="card-title">¿Cuál es el valor de esta resistencia?</div>
-      ${buildResistorHTML(c1.css, c2.css, c3.css)}
-      <div class="band-labels">
-        <div class="band-label">
-          <div class="color-chip ${c1.css}"></div>
-          <span>${c1.nombre}</span><small>Banda 1</small>
+  if(q.modo === 'A') {
+    let c1 = COLORES.find(c => c.d === q.d1);
+    let c2 = COLORES.find(c => c.d === q.d2);
+    let c3 = COLORES.find(c => c.m === q.m);
+    content.innerHTML = `
+      <p style="margin-bottom:1rem">Identifica el valor de la resistencia:</p>
+      <div class="resistor-wrap">
+        <div class="resistor-wire"></div>
+        <div class="resistor-body">
+          <div class="band ${c1.c}"></div><div class="band ${c2.c}"></div><div class="band ${c3.c}"></div>
+          <div style="width:20px"></div><div class="band b-dorado"></div>
         </div>
-        <div class="band-label">
-          <div class="color-chip ${c2.css}"></div>
-          <span>${c2.nombre}</span><small>Banda 2</small>
-        </div>
-        <div class="band-label">
-          <div class="color-chip ${c3.css}"></div>
-          <span>${c3.nombre}</span><small>× Mult.</small>
-        </div>
-        <div class="band-label">
-          <div class="color-chip b-dorado"></div>
-          <span>Dorada</span><small>±5%</small>
-        </div>
+        <div class="resistor-wire"></div>
       </div>
       <div class="input-group">
-        <label>Valor Nominal (Ω)</label>
-        <input type="number" id="inp-nominal" placeholder="ej: 2200" inputmode="numeric">
-      </div>
-      <div class="input-group">
-        <label>Valor Mínimo (Ω)</label>
-        <input type="number" id="inp-min" placeholder="ej: 2090" inputmode="numeric">
-      </div>
-      <div class="input-group">
-        <label>Valor Máximo (Ω)</label>
-        <input type="number" id="inp-max" placeholder="ej: 2310" inputmode="numeric">
-      </div>
-      <button class="btn-primary" id="btn-responder" onclick="responderA()">VERIFICAR RESPUESTA</button>
-    `;
+        <label>Valor en Ohmios (Ω)</label>
+        <input type="number" id="ans">
+      </div>`;
   } else {
-    // Valor → Colores
-    card.innerHTML = `
-      <div class="modo-badge modo-b">Valor → Colores</div>
-      <div class="card-title">¿Qué colores corresponden a esta resistencia?</div>
-      <div class="valor-display">
-        <div class="valor-numero">${fmtOhm(valor)}</div>
-        <div class="valor-tolerancia">Dorada ±5% (Banda 4)</div>
-      </div>
-      <div class="input-group">
-        <label>Banda 1 — 1er dígito</label>
-        <input type="text" id="inp-b1" placeholder="ej: Rojo" autocomplete="off" autocorrect="off" spellcheck="false">
-      </div>
-      <div class="input-group">
-        <label>Banda 2 — 2do dígito</label>
-        <input type="text" id="inp-b2" placeholder="ej: Naranja" autocomplete="off" autocorrect="off" spellcheck="false">
-      </div>
-      <div class="input-group">
-        <label>Banda 3 — Multiplicador</label>
-        <input type="text" id="inp-b3" placeholder="ej: Rojo (×100)" autocomplete="off" autocorrect="off" spellcheck="false">
-      </div>
-      <button class="btn-primary" id="btn-responder" onclick="responderB()">VERIFICAR RESPUESTA</button>
-    `;
+    content.innerHTML = `
+      <p style="margin-bottom:1rem">Indica los colores para: <strong>${q.val} Ω</strong></p>
+      <div class="input-group"><label>Banda 1 (Color)</label><input type="text" id="b1"></div>
+      <div class="input-group"><label>Banda 2 (Color)</label><input type="text" id="b2"></div>
+      <div class="input-group"><label>Banda 3 (Multiplicador)</label><input type="text" id="b3"></div>`;
   }
 }
 
-function buildResistorHTML(css1, css2, css3) {
-  return `
-    <div class="resistor-wrap" style="margin:10px 0 18px">
-      <div class="resistor-wire"></div>
-      <div class="resistor-body">
-        <div class="resistor-body-bg">
-          <div class="band-gap"></div>
-          <div class="band ${css1}"></div>
-          <div class="band-gap"></div>
-          <div class="band ${css2}"></div>
-          <div class="band-gap"></div>
-          <div class="band ${css3}"></div>
-          <div class="band-gap-wide"></div>
-          <div class="band b-dorado"></div>
-          <div class="band-gap"></div>
-        </div>
-      </div>
-      <div class="resistor-wire"></div>
-    </div>`;
-}
+function validar() {
+  const q = questions[currentIdx];
+  let isCorrect = false;
+  let correctTxt = "";
 
-// ═══════════════════════════════════════════════
-//  RESPONDER MODO A (colores → valor)
-// ═══════════════════════════════════════════════
-function responderA() {
-  if (estado.respondido) return;
-  const { valor, vMin, vMax } = estado.pregActual;
-
-  const rN = parseFloat(document.getElementById('inp-nominal').value);
-  const rMn= parseFloat(document.getElementById('inp-min').value);
-  const rMx= parseFloat(document.getElementById('inp-max').value);
-
-  const okN = Math.abs(rN - valor) < 1;
-  const okMn= Math.abs(rMn - vMin) < 2;
-  const okMx= Math.abs(rMx - vMax) < 2;
-  const correcto = okN && okMn && okMx;
-
-  // Colorear inputs
-  setInputState('inp-nominal', okN);
-  setInputState('inp-min', okMn);
-  setInputState('inp-max', okMx);
-
-  document.getElementById('btn-responder').disabled = true;
-  estado.respondido = true;
-
-  const detalles = `
-    <strong>Nominal:</strong> ${fmtOhm(valor)} &nbsp;|&nbsp;
-    <strong>Mín:</strong> ${vMin.toFixed(0)} Ω &nbsp;|&nbsp;
-    <strong>Máx:</strong> ${vMax.toFixed(0)} Ω
-  `;
-  mostrarFeedback(correcto, detalles);
-  procesarRespuesta(correcto, 'Colores → Valor Nominal/Mín/Máx');
-}
-
-// ═══════════════════════════════════════════════
-//  RESPONDER MODO B (valor → colores)
-// ═══════════════════════════════════════════════
-function responderB() {
-  if (estado.respondido) return;
-  const { c1, c2, c3, valor } = estado.pregActual;
-
-  const rB1 = document.getElementById('inp-b1').value;
-  const rB2 = document.getElementById('inp-b2').value;
-  const rB3 = document.getElementById('inp-b3').value;
-
-  const ok1 = coloresIguales(rB1, c1.nombre);
-  const ok2 = coloresIguales(rB2, c2.nombre);
-  const ok3 = coloresIguales(rB3, c3.nombre);
-  const correcto = ok1 && ok2 && ok3;
-
-  setInputState('inp-b1', ok1);
-  setInputState('inp-b2', ok2);
-  setInputState('inp-b3', ok3);
-
-  document.getElementById('btn-responder').disabled = true;
-  estado.respondido = true;
-
-  const detalles = `
-    <strong>Banda 1:</strong> ${c1.nombre} &nbsp;|&nbsp;
-    <strong>Banda 2:</strong> ${c2.nombre} &nbsp;|&nbsp;
-    <strong>Banda 3:</strong> ${c3.nombre}
-  `;
-  mostrarFeedback(correcto, detalles);
-  procesarRespuesta(correcto, 'Valor Nominal → Bandas de Color');
-}
-
-function setInputState(id, ok) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.classList.remove('ok','fail');
-  el.classList.add(ok ? 'ok' : 'fail');
-  el.disabled = true;
-}
-
-// ═══════════════════════════════════════════════
-//  FEEDBACK + COUNTDOWN
-// ═══════════════════════════════════════════════
-function mostrarFeedback(correcto, detalles) {
-  const area = document.getElementById('feedback-area');
-  const clase = correcto ? 'correcto' : 'incorrecto';
-  const titulo = correcto ? '¡Correcto!' : 'Incorrecto';
-  area.innerHTML = `
-    <div class="feedback-card ${clase}">
-      <div class="feedback-title">${titulo}</div>
-      <div class="feedback-detail">${correcto ? 'Todos los valores son correctos.' : 'Respuesta correcta:'}<br>${detalles}</div>
-      <div class="countdown-wrap">
-        <div class="countdown-ring">
-          <svg viewBox="0 0 40 40" width="40" height="40">
-            <circle class="bg" cx="20" cy="20" r="17"/>
-            <circle class="fg" id="ring-fg" cx="20" cy="20" r="17"/>
-          </svg>
-          <div class="countdown-number" id="countdown-num">8</div>
-        </div>
-        <div class="countdown-text">Continuando en <span id="countdown-txt">8</span> segundos…</div>
-      </div>
-    </div>`;
-  iniciarCountdown(8);
-}
-
-function iniciarCountdown(seg) {
-  let restante = seg;
-  const circ = 2 * Math.PI * 17; // 106.8
-  const ring = document.getElementById('ring-fg');
-  const numEl = document.getElementById('countdown-num');
-  const txtEl = document.getElementById('countdown-txt');
-
-  if (ring) ring.style.strokeDasharray = circ;
-
-  estado.timerID = setInterval(() => {
-    restante--;
-    if (numEl) numEl.textContent = restante;
-    if (txtEl) txtEl.textContent = restante;
-    if (ring)  ring.style.strokeDashoffset = circ * (1 - restante/seg);
-
-    if (restante <= 0) {
-      clearInterval(estado.timerID);
-      avanzar();
-    }
-  }, 1000);
-}
-
-// ═══════════════════════════════════════════════
-//  AVANZAR
-// ═══════════════════════════════════════════════
-function procesarRespuesta(correcto, desc) {
-  if (correcto) estado.aciertos++;
-  estado.historial.push({ desc, correcto });
-}
-
-function avanzar() {
-  estado.preguntaIdx++;
-  estado.respondido = false;
-  if (estado.preguntaIdx >= 10) {
-    mostrarResultados();
+  if(q.modo === 'A') {
+    const userAns = parseFloat(document.getElementById('ans').value);
+    isCorrect = userAns === q.val;
+    correctTxt = `La respuesta era ${q.val} Ω`;
   } else {
-    renderPregunta();
-    window.scrollTo(0,0);
+    const b1 = document.getElementById('b1').value.toLowerCase().trim();
+    const b2 = document.getElementById('b2').value.toLowerCase().trim();
+    const b3 = document.getElementById('b3').value.toLowerCase().trim();
+    const c1 = COLORES.find(c => c.d === q.d1).n.toLowerCase();
+    const c2 = COLORES.find(c => c.d === q.d2).n.toLowerCase();
+    const c3 = COLORES.find(c => c.m === q.m).n.toLowerCase();
+    isCorrect = (b1.includes(c1) && b2.includes(c2) && b3.includes(c3));
+    correctTxt = `Colores: ${c1}, ${c2}, ${c3}`;
   }
+
+  const fb = document.getElementById('feedback-area');
+  fb.style.display = 'block';
+  fb.style.background = isCorrect ? 'rgba(46,204,113,0.2)' : 'rgba(226,35,26,0.2)';
+  fb.style.color = isCorrect ? '#2ecc71' : '#ff4444';
+  fb.textContent = isCorrect ? "¡CORRECTO!" : `INCORRECTO. ${correctTxt}`;
+  
+  if(isCorrect) score++;
+  document.getElementById('btn-main').textContent = "Siguiente";
+  document.getElementById('btn-main').onclick = next;
 }
 
-// ═══════════════════════════════════════════════
-//  RESULTADOS
-// ═══════════════════════════════════════════════
-function mostrarResultados() {
-  mostrarPantalla('screen-resultados');
-  const { aciertos, historial } = estado;
-  const total = 10;
-  const nota = calcNota(aciertos, total);
-  const pct = Math.round(aciertos/total*100);
+function next() {
+  currentIdx++;
+  if(currentIdx < 10) renderQuestion();
+  else finish();
+}
 
-  // Nota y color
-  let claseNota, claseEstado, textoEstado;
-  if (nota >= 5.0) {
-    claseNota='nota-aprobado'; claseEstado='estado-aprobado'; textoEstado='Aprobado con Distinción';
-  } else if (nota >= 4.0) {
-    claseNota='nota-regular';  claseEstado='estado-regular';  textoEstado='Aprobado';
-  } else {
-    claseNota='nota-reprobado';claseEstado='estado-reprobado';textoEstado='Reprobado';
-  }
-
+function finish() {
+  document.getElementById('screen-pregunta').classList.add('hidden');
+  document.getElementById('screen-resultados').classList.remove('hidden');
+  let nota = score < 6 ? (score / 6) * 3 + 1 : ((score - 6) / 4) * 3 + 4;
   document.getElementById('res-nota').textContent = nota.toFixed(1);
-  document.getElementById('res-nota').className = `nota-numero ${claseNota}`;
-  document.getElementById('res-estado').textContent = textoEstado;
-  document.getElementById('res-estado').className = `estado-badge ${claseEstado}`;
-
-  document.getElementById('res-aciertos').textContent = aciertos;
-  document.getElementById('res-errores').textContent = total - aciertos;
-  document.getElementById('res-pct').textContent = pct+'%';
-
-  // Barra progreso
-  const bar = document.getElementById('res-bar');
-  let barColor = nota >= 5 ? '#43A047' : nota >= 4 ? '#FFB300' : '#CC0000';
-  bar.style.background = barColor;
-  setTimeout(() => bar.style.width = pct+'%', 100);
-
-  // Historial
-  const tb = document.getElementById('hist-tbody');
-  tb.innerHTML = '';
-  historial.forEach((h,i) => {
-    tb.innerHTML += `<tr>
-      <td>${i+1}</td>
-      <td style="font-size:12px;color:var(--gris-texto)">${h.desc}</td>
-      <td class="${h.correcto?'tick-ok':'tick-fail'}">${h.correcto?'✔ OK':'✘ No'}</td>
-    </tr>`;
-  });
-
-  // Countdown cierre
-  let seg = 15;
-  const cdEl = document.getElementById('res-countdown');
-  cdEl.textContent = `Cerrando en ${seg} segundos…`;
-  const t = setInterval(() => {
-    seg--;
-    cdEl.textContent = `Cerrando en ${seg} segundos…`;
-    if (seg <= 0) { clearInterval(t); cdEl.textContent = 'Puedes cerrar esta página.'; }
-  }, 1000);
-
-  window.scrollTo(0,0);
+  document.getElementById('res-stats').textContent = `Lograste ${score} de 10 aciertos.`;
 }
-
-// ═══════════════════════════════════════════════
-//  UTILIDADES DE PANTALLA
-// ═══════════════════════════════════════════════
-function mostrarPantalla(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-
-function reiniciar() {
-  mostrarPantalla('screen-inicio');
-}
-
-// ═══════════════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════════════
-buildRefTable();
 </script>
 </body>
 </html>
+
